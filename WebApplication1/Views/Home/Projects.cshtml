@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Projekte";
+}
+<div class="text-center">
+    <h1 class="display-4">Meine Projekte</h1>
+</div>
+
+<div>
+    <form>
+        <button type="submit" class="btn btn-primary getProjects" style="float:left">Get My Repositories</button>
+        <div class="sk-folding-cube" style="float:left">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+        </div>
+    </form><br /><br />
+    <input type="text" style="float:left"name="Username" id="gitUsername" placeholder="Username (manzinge)"><br />
+    <table id="projects">
+        <tr>
+            <th>Name</th>
+            <th>Beschreibung</th>
+            <th>Datum</th>
+        </tr>
+    </table>
+</div>
+
+@section Scripts  {
+    <script type="text/javascript">
+        var isDone = false;
+        $(function () {
+           $(".getProjects").click(function(e){
+               e.preventDefault();
+               $(".sk-folding-cube").css("visibility", "visible");
+               var gitUsername = document.getElementById('gitUsername').value === "" ? "manzinge" : document.getElementById('gitUsername').value;
+               console.log(gitUsername);
+               $.post("@Url.Action("GetProjects","Home")", { username : gitUsername}, function (data) {
+                   fillTable(data);
+                   if (isDone) {
+                       $(".sk-folding-cube").css("visibility", "hidden");
+                   }
+               });
+           });
+        });
+        function fillTable(data) {
+            var Parent = document.getElementById('projects');
+            for(var i = Parent.rows.length - 1; i > 0; i--)
+            {
+                Parent.deleteRow(i);
+            }
+            var newRow = Parent.getElementsByTagName('tbody')[0].insertRow();
+            var counter = 0;
+            data.forEach(project => {
+                Object.keys(project).forEach(e => {
+                    if (counter % 3 === 0) {
+                        newRow = document.getElementById('projects').getElementsByTagName('tbody')[0].insertRow();
+                    }
+                    var tmpCell = newRow.insertCell(0);
+                    var text = project[e] === null ? "" : project[e];
+                    var tmpText = document.createTextNode(text);
+                    tmpCell.appendChild(tmpText);
+                    counter++;
+                })
+            });
+            isDone = true;
+        }
+    </script>
+}

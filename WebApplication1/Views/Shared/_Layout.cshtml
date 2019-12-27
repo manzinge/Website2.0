@@ -6,6 +6,9 @@
     <title>@ViewData["Title"] - WebApplication1</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/footer.css" />
+    <link rel="stylesheet" href="~/css/projectTable.css" />
+    <link rel="stylesheet" href="~/css/loadingAnimation.css" />
 </head>
 <body>
     <header>
@@ -16,13 +19,20 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="collapse navbar-collapse flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1 ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Projects">Projekte</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1 ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="DSGVO">Datenschutzgrundverordnung</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Impressum">Impressum</a>
                         </li>
                     </ul>
                 </div>
@@ -35,11 +45,41 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - WebApplication1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="footer-distributed">
+        <div class="footer-left">
+            <div class="footer-links">
+                <a class="nav-item" asp-area="" asp-controller="Home" asp-action="Index">Maximilian Anzinger</a><br/>
+                <a class="nav-item" asp-area="" asp-controller="Home" asp-action="DSGVO">Datenschutzgrundverordnung</a><br />
+                <a class="nav-item" asp-area="" asp-controller="Home" asp-action="Impressum">Impressum</a>
+            </div>
+            <p class="footer-company-name">Maximilian Anzinger © 2020</p>
         </div>
+
+        <div class="footer-center">
+            <br />
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Bürgermeister-Moser-Straße. 5</span> Hebertsfelden, Deutschland</p>
+            </div>
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+49 157 7345 2411</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:max.anzinger@hotmail.com">max.anzinger@hotmail.com</a></p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <br />
+            <p class="footer-company-about">
+                <span>Über mich</span>
+                Offen für Neues, technologiebegeistert und sportlich. Aktuell Student in Deggendorf und Junior Developer bei der GAB Enterprise IT Solutions GmbH. Falls du mehr über mich wissen möchtest, kannst du mir gerne schreiben!
+            </p>
+        </div>
+
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
