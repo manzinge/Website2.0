@@ -7,7 +7,7 @@
 
 <div>
     <form>
-        <button type="submit" class="btn btn-primary getProjects" style="float:left">Get My Repositories</button>
+        <button id="getRepoButton" type="submit" class="btn btn-primary getProjects" style="float:left">Get My Repositories</button>
         <div class="sk-folding-cube" style="float:left">
             <div class="sk-cube1 sk-cube"></div>
             <div class="sk-cube2 sk-cube"></div>
@@ -27,6 +27,13 @@
 
 @section Scripts  {
     <script type="text/javascript">
+        var gitInput = document.getElementById('gitUsername');
+        gitInput.addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById('getRepoButton').click();
+            }
+        });
         var isDone = false;
         $(function () {
            $(".getProjects").click(function(e){
