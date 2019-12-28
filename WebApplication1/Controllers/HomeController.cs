@@ -38,6 +38,10 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+        public IActionResult Knowledge()
+        {
+            return View();
+        }
 
         public IActionResult Impressum()
         {

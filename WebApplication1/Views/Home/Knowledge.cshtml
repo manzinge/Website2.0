@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Kenntnisse";
+}
+<div class="text-center">
+    <h1 class="display-4">Kenntnisse</h1>
+</div>
+
+<div class="grid">
+    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-expert card" onclick="flip()"><img src="~/imgs/knowledgeAzure.png" alt="knowledgeAzure" class="gridImage" /></div>
+    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-expert"><img src="~/imgs/knowledgePowershell.jpeg" alt="knowledgePowershell" class="gridImage" /></div>
+    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-expert"><img src="~/imgs/knowledgeNet.png" alt="knowledgeNet" class="gridImage" /></div>
+    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-intermediate"><img src="~/imgs/knowledgePython.jpg" alt="knowledgePython" class="gridImage" /></div>
+    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-intermediate"><img src="~/imgs/knowledgeSql.jpg" alt="knowledgeSql" class="gridImage" /></div>
+    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-intermediate"><img src="~/imgs/knowledgeSharepoint.png" alt="knowledgeSharepoint" class="gridImage" /></div>
+    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-beginner"><img src="~/imgs/knowledgeLabview.jpg" alt="knowledgeLabview" class="gridImage" /></div>
+    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-beginner"><img src="~/imgs/knowledgeUnity.png" alt="knowledgeUnity" class="gridImage" /></div>
+</div>
+
+@section Scripts  {
+    <script type="text/javascript">
+        var $grid = $('.grid').packery({
+            itemSelector: '.grid-item',
+            columnWidth: 100,
+            gutter: 6
+        });
+
+        // make all grid-items draggable
+        $grid.find('.grid-item').each(function (i, gridItem) {
+            var draggie = new Draggabilly(gridItem);
+            // bind drag events to Packery
+            $grid.packery('bindDraggabillyEvents', draggie);
+        });
+
+        function flip() {
+            $('.card').toggleClass('flipped');
+        }
+    </script>
+}
