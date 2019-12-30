@@ -25,73 +25,53 @@
 
 <p>Quelle: <a href="https://www.e-recht24.de/impressum-generator.html">https://www.e-recht24.de/impressum-generator.html</a></p>
 <p>Bilderquellen:</p>
-<table>
-    <tr><td>Website: Index.html</td></tr>
-    <tr><td>Bild 1:</td></tr>
+
+<table id="sources">
     <tr>
-        <td>Author: </td>
-        <td>Karl-von-Closen Gymnasium Eggenfelden</td>
-    </tr>
-    <tr>
-        <td>Quelle: </td>
-        <td>https://kidz.ccca.ac.at/wp-content/uploads/2015/06/KvCLogoMitWaldrapp.png</td>
-    </tr>
-    <tr>
-        <td>Lizenz: </td>
-        <td>Individual Nutzungsrecht durch Absprache mit dem Urheber</td>
-    </tr>
-    <tr>
-        <td>Bearbeitungshinweise: </td>
-        <td>Keine</td>
-    </tr>
-    <tr>
-        <td>Titel des Werks: </td>
-        <td>"Karl-von-Closen Gymnasium Logo"</td>
-    </tr>
-    <tr><td></td></tr>
-    <tr><td>Bild 2:</td></tr>
-    <tr>
-        <td>Author: </td>
-        <td>Wikimedia Deutschland - Gesellschaft zur Förderung Freien Wissens e. V. </td>
-    </tr>
-    <tr>
-        <td>Quelle: </td>
-        <td>https://upload.wikimedia.org/wikipedia/commons/b/be/Technische_Hochschule_Deggendorf_logo.png </td>
-    </tr>
-    <tr>
-        <td>Lizenz: </td>
-        <td>Creative Commons 4.0 by-nc https://creativecommons.org/licenses/by-nc/4.0/legalcode</td>
-    </tr>
-    <tr>
-        <td>Bearbeitungshinweise: </td>
-        <td>Ausschneiden des THD-Logos</td>
-    </tr>
-    <tr>
-        <td>Titel des Werks: </td>
-        <td>"Technische_Hochschule_Deggendorf_logo.png"</td>
-    </tr>
-    <tr><td></td></tr>
-    <tr><td>Bild 3:</td></tr>
-    <tr>
-        <td>Author: </td>
-        <td>GAB Enterprise IT Solutions GmbH</td>
-    </tr>
-    <tr>
-        <td>Quelle: </td>
-        <td>https://media.licdn.com/dms/image/C4D0BAQFSoitPmv-Qyw/company-logo_200_200/0?e=2159024400&v=beta&t=RhkWsTaRoY6uhACO_d1-rbm53fazZwVCwVfvMC0g7xk </td>
-    </tr>
-    <tr>
-        <td>Lizenz: </td>
-        <td>Individual Nutzungsrecht durch Absprache mit dem Urheber</td>
-    </tr>
-    <tr>
-        <td>Bearbeitungshinweise: </td>
-        <td>Keine</td>
-    </tr>
-    <tr>
-        <td>Titel des Werks: </td>
-        <td>"company-logo_200_200"</td>
+        <th>Seite</th>
+        <th>Author</th>
+        <th>Beschreibung</th>
+        <th>Quelle</th>
+        <th>Lizenz</th>
+        <th>Bearbeitungshinweis</th>
     </tr>
 </table>
-<br />
-<br />
+
+@section Scripts  {
+    <script type="text/javascript">
+        window.onload = function exampleFunction() {
+            fillSources()
+        }
+        function fillSources() {
+            $.post("@Url.Action("GetImageSources","Legal")", function (data) {
+                console.log(data);
+                   fillTable(data);
+               });
+        }
+        function fillTable(data) {
+            var Parent = document.getElementById('sources');
+            var newRow = Parent.getElementsByTagName('tbody')[0].insertRow();
+            data.forEach(source => {
+                newRow = document.getElementById('sources').getElementsByTagName('tbody')[0].insertRow();
+                newRow.insertCell(0).appendChild(document.createTextNode(source.page));
+                newRow.insertCell(1).appendChild(document.createTextNode(source.author));
+
+                var sourcelink = document.createElement("a");
+                sourcelink.setAttribute("href", source.source);
+                var sourceLinkText = document.createTextNode("Link");
+                sourcelink.appendChild(sourceLinkText);
+
+                newRow.insertCell(2).appendChild(document.createTextNode(source.description));
+                newRow.insertCell(3).appendChild(sourcelink);
+
+                var licenseLink = document.createElement("a");
+                licenseLink.setAttribute("href", source.license);
+                var licenseLinkText = document.createTextNode("License");
+                licenseLink.appendChild(licenseLinkText);
+
+                newRow.insertCell(4).appendChild(licenseLink);
+                newRow.insertCell(5).appendChild(document.createTextNode(source.customizations === null ? "Keine" : source.customizations));
+            });
+        }
+    </script>
+}

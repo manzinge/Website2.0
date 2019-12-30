@@ -1,26 +1,26 @@
-﻿#projects {
+﻿#sources {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 
-    #projects td{
+    #sources td{
         border: 1px solid #ddd;
         padding: 8px;
     }
 
-    #projects tr:nth-child(even) {
+    #sources tr:nth-child(even) {
         background-color: #f2f2f2;
     }
 
-    #projects tr:hover {
+    #sources tr:hover {
         background-color: #ddd;
     }
 
-    #projects th {
+    #sources th {
         padding-top: 12px;
         padding-bottom: 12px;
-        padding-left: 15px;
-        background-color: #4CAF50;
+        padding-left: 5px;
+        background-color: #505050;
         color: white;
     }
