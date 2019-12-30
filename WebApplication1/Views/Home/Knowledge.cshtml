@@ -7,13 +7,13 @@
 
 <div class="grid">
     <div class="grid-item grid-item--width3 grid-item--height2 knowledge-expert card" onclick="flip()"><img src="~/imgs/knowledgeAzure.png" alt="knowledgeAzure" class="gridImage" /></div>
-    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-expert"><img src="~/imgs/knowledgePowershell.jpeg" alt="knowledgePowershell" class="gridImage" /></div>
-    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-expert"><img src="~/imgs/knowledgeNet.png" alt="knowledgeNet" class="gridImage" /></div>
+    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-expert"><img src="~/imgs/knowledgePowershell.png" alt="knowledgePowershell" class="gridImage" /></div>
+    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-expert"><img src="~/imgs/knowledgeNet.jpg" alt="knowledgeNet" class="gridImage" /></div>
     <div class="grid-item grid-item--width3 grid-item--height2 knowledge-intermediate"><img src="~/imgs/knowledgePython.jpg" alt="knowledgePython" class="gridImage" /></div>
     <div class="grid-item grid-item--width3 grid-item--height2 knowledge-intermediate"><img src="~/imgs/knowledgeSql.jpg" alt="knowledgeSql" class="gridImage" /></div>
-    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-intermediate"><img src="~/imgs/knowledgeSharepoint.png" alt="knowledgeSharepoint" class="gridImage" /></div>
-    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-beginner"><img src="~/imgs/knowledgeLabview.jpg" alt="knowledgeLabview" class="gridImage" /></div>
-    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-beginner"><img src="~/imgs/knowledgeUnity.png" alt="knowledgeUnity" class="gridImage" /></div>
+    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-intermediate"><img src="~/imgs/knowledgeSharepoint.jpg" alt="knowledgeSharepoint" class="gridImage" /></div>
+    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-beginner"><img src="~/imgs/knowledgeUnity.jpg" alt="knowledgeUnity" class="gridImage" /></div>
+    <div class="grid-item grid-item--width3 grid-item--height2 knowledge-beginner"><img src="~/imgs/knowledgeLabview.png" alt="knowledgeLabview" class="gridImage" /></div>
 </div>
 
 @section Scripts  {
@@ -21,7 +21,7 @@
         var $grid = $('.grid').packery({
             itemSelector: '.grid-item',
             columnWidth: 100,
-            gutter: 6
+            gutter: 20
         });
 
         // make all grid-items draggable

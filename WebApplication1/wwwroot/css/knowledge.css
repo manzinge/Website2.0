@@ -3,15 +3,15 @@
 }
 
 .gridImage {
-    width: 97%;
+    width: 99%;
     height: 99%;
     display: block;
     margin: auto auto auto auto;
+    background-color:white;
 }
 
 .grid {
-    background: #DDD;
-    max-width: 1200px;
+    background: white;
 }
 
     /* clear fix */
@@ -22,17 +22,6 @@
     }
 
 /* ---- .grid-item ---- */
-.knowledge-expert {
-    background: #148f35;
-}
-
-.knowledge-intermediate {
-    background: #e2f162;
-}
-
-.knowledge-beginner {
-    background: #dfa944;
-}
 
 .grid-item {
     float: left;

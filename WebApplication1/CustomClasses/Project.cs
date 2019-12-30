@@ -9,6 +9,7 @@ namespace WebApplication1.CustomClasses
     {
         public string updated_at { get; set; }
         public string description { get; set; }
+        public string svn_url { get; set; }
 
         public string name { get; set; }
     }

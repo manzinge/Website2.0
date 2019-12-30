@@ -15,7 +15,7 @@
             <div class="sk-cube3 sk-cube"></div>
         </div>
     </form><br /><br />
-    <input type="text" style="float:left"name="Username" id="gitUsername" placeholder="Username (manzinge)"><br />
+    <input type="text" style="float:left" name="Username" id="gitUsername" placeholder="Username (manzinge)"><br /><br />
     <table id="projects">
         <tr>
             <th>Name</th>
@@ -41,7 +41,7 @@
                $(".sk-folding-cube").css("visibility", "visible");
                var gitUsername = document.getElementById('gitUsername').value === "" ? "manzinge" : document.getElementById('gitUsername').value;
                console.log(gitUsername);
-               $.post("@Url.Action("GetProjects","Home")", { username : gitUsername}, function (data) {
+               $.post("@Url.Action("GetProjects","Git")", { username : gitUsername}, function (data) {
                    fillTable(data);
                    if (isDone) {
                        $(".sk-folding-cube").css("visibility", "hidden");
@@ -58,16 +58,39 @@
             var newRow = Parent.getElementsByTagName('tbody')[0].insertRow();
             var counter = 0;
             data.forEach(project => {
-                Object.keys(project).forEach(e => {
-                    if (counter % 3 === 0) {
-                        newRow = document.getElementById('projects').getElementsByTagName('tbody')[0].insertRow();
-                    }
-                    var tmpCell = newRow.insertCell(0);
-                    var text = project[e] === null ? "" : project[e];
-                    var tmpText = document.createTextNode(text);
-                    tmpCell.appendChild(tmpText);
-                    counter++;
-                })
+                newRow = document.getElementById('projects').getElementsByTagName('tbody')[0].insertRow();
+
+                //Setting up the link to the github Page
+                var link = document.createElement("a");
+                link.setAttribute("href", project.svn_url)
+                //link css class for styling
+                //link.className = "someCSSclass";
+                var linkText = document.createTextNode(project.name);
+                link.appendChild(linkText);
+
+                newRow.insertCell(0).appendChild(link);
+                newRow.insertCell(1).appendChild(document.createTextNode(project.description == null ? "" : project.description));
+                newRow.insertCell(2).appendChild(document.createTextNode(project.updated_at));
+                console.log(project.svn_url)
+
+
+                //var link = document.createElement("a");
+                //link.setAttribute("href", "http://www.microsoft.com")
+                //link.className = "someCSSclass";
+                //var linkText = document.createTextNode("Click me");
+                //link.appendChild(linkText);
+                //newCell.appendChild(link);
+
+                //Object.keys(project).forEach(e => {
+                //    if (counter % 3 === 0) {
+                //        newRow = document.getElementById('projects').getElementsByTagName('tbody')[0].insertRow();
+                //    }
+                //    var tmpCell = newRow.insertCell(0);
+                //    var text = project[e] === null ? "" : project[e];
+                //    var tmpText = document.createTextNode(text);
+                //    tmpCell.appendChild(tmpText);
+                //    counter++;
+                //})
             });
             isDone = true;
         }
