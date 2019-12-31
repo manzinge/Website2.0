@@ -1,10 +1,34 @@
 ﻿@{
     ViewData["Title"] = "Willkommen!";
 }
-<div class="maxProfile d-none d-lg-block">
-    <img src="~/imgs/maxProfileBack.jpg" alt="widescreenPicture" id="profileBack">
-    <div class="top-left-text">Hi, Ich bin Max!<br />Software-Entwickler <br /> Student und Volleyballer</div>
+
+<div id="fullpage">
+    <div class="section">
+        <div class="maxProfile d-none d-lg-block">
+            <img src="~/imgs/maxProfileBack.jpg" alt="wideScreenPicture" id="profileBack">
+            <div class="top-left-text">Hi, Ich bin Max!<br />Software-Entwickler <br /> Student und Volleyballer</div>
+        </div>
+        <div class="d-lg-none">
+            <img src="~/imgs/maxProfileFront.jpeg" alt="smallScreenPicture" id="profileBack" />
+        </div>
+    </div>
+    <div class="section">Some section</div>
+    <div class="section">Some section</div>
+    <div class="section">Some section</div>
 </div>
-<div class="d-lg-none">
-    @*Do Some mobile stuff*@
-</div>
+
+
+
+
+@section Scripts  {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#fullpage').fullpage({
+                //options here
+                autoScrolling: true,
+                scrollHorizontally: false
+            });
+        });
+    </script>
+}
+
