@@ -27,6 +27,7 @@
 
 @section Scripts  {
     <script type="text/javascript">
+        var isDone = false;
         var gitInput = document.getElementById('gitUsername');
         gitInput.addEventListener("keyup", function (event) {
             if (event.keyCode === 13) {
@@ -34,13 +35,11 @@
                 document.getElementById('getRepoButton').click();
             }
         });
-        var isDone = false;
-        $(function () {
+        $(function getGitProjects() {
            $(".getProjects").click(function(e){
                e.preventDefault();
                $(".sk-folding-cube").css("visibility", "visible");
                var gitUsername = document.getElementById('gitUsername').value === "" ? "manzinge" : document.getElementById('gitUsername').value;
-               console.log(gitUsername);
                $.post("@Url.Action("GetProjects","Git")", { username : gitUsername}, function (data) {
                    fillTable(data);
                    if (isDone) {

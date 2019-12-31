@@ -58,7 +58,7 @@ namespace WebApplication1.Controllers
         public async Task<List<ImageSource>> GetImageSources()
         {
             List<ImageSource>jsonData = new List<ImageSource>();
-            string path = @"..\imgSources.json";
+            string path = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"Resources\imgSources.json"));
             var jsonContent = System.IO.File.ReadAllText(path);
             try
             {

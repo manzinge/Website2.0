@@ -1,0 +1,21 @@
+﻿#profileBack {
+    height: 100%;
+    width: 100%;
+}
+
+.top-left-text {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size:40px;
+    color:white;
+    background-color: black;
+    margin-top: 10%;
+    margin-left: 10%;
+    padding: 10px 10px 10px 10px;
+}
+
+.maxProfile {
+    text-align: center;
+    color: white;
+}
