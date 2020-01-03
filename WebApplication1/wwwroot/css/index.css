@@ -7,11 +7,11 @@
     position: absolute;
     top: 8px;
     left: 16px;
-    font-size:40px;
-    color:white;
+    font-size: 40px;
+    color: white;
     background-color: black;
     margin-top: 10%;
-    margin-left: 10%;
+    margin-left: 6%;
     padding: 10px 10px 10px 10px;
 }
 
@@ -19,3 +19,68 @@
     text-align: center;
     color: white;
 }
+
+.lifeTitle {
+    font-size: 100px;
+    color:black;
+    text-align:center;
+    font-weight:bold;
+}
+
+#gabImage, #thdImage {
+    max-width: 110%;
+}
+.careerSection {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.career-table {
+    border: solid 1px #DDEEEE;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font: normal 13px Arial, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+}
+
+    .career-table thead th {
+        background-color: #770037;
+        border: solid 1px #ffffff;
+        color: #fff1f1;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .career-table tbody td {
+        border: solid 1px #DDEEEE;
+        color: #333;
+        padding: 10px;
+        text-shadow: 1px 1px 1px #fff;
+    }
+
+.student-table {
+    border: solid 1px #DDEEEE;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font: normal 13px Arial, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 17px;
+}
+
+    .student-table thead th {
+        background-color: #2e3b5c;
+        border: solid 1px #ffffff;
+        color: #fff1f1;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .student-table tbody td {
+        border: solid 1px #DDEEEE;
+        color: #333;
+        padding: 10px;
+        text-shadow: 1px 1px 1px #fff;
+    }

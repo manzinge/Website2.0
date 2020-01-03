@@ -72,5 +72,9 @@
             });
             isDone = true;
         }
+        $(document).ready(function () {
+            //Used in order to load the Repos at least one time when firing up the Page
+            $('#getRepoButton').click();
+        })
     </script>
 }
