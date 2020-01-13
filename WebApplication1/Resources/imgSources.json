@@ -41,26 +41,10 @@
     },
     {
         "page":"Kenntnisse",
-        "author":"Unity Technologies",
-        "description":"Unity Logo",
-        "source":"https://unity3d.com/files/images/ogimg.jpg",
-        "license":"https://unity3d.com/de/legal/branding_trademarks",
-        "customizations":null
-    },
-    {
-        "page":"Kenntnisse",
         "author":"Microsoft Corporation",
         "description":"SQL Logo",
         "source":"https://banner2.cleanpng.com/20180526/oqt/kisspng-microsoft-sql-server-mysql-database-logo-5b098c6ebad6d7.7316225815273524307653.jpg",
         "license":"https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx",
         "customizations":"Replaced transparent background with white one"
-    },
-    {
-        "page":"Kenntnisse",
-        "author":"National Instruments",
-        "description":"LabView 17 Logo",
-        "source":"https://www.amc-systeme.de/files/images/amc_news_201728_labview_2017-logo.jpg",
-        "license":"https://www.ni.com/legal/trademarks/",
-        "customizations":null
     }
 ]
