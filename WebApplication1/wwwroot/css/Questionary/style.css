@@ -1,0 +1,48 @@
+﻿a.button2 {
+    display: inline-block;
+    padding: 0.5em 5em;
+    border: 0.15em solid black;
+    margin: 0 0.5em 0.5em 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 500;
+    color: black;
+    text-align: center;
+    transition: all 0.15s;
+    background-color: white;
+    border-radius: 10px;
+}
+
+    a.button2:hover {
+        color: #DDDDDD;
+        border-color: black;
+    }
+
+    a.button2:active {
+        color: #BBBBBB;
+        border-color: black;
+    }
+
+@media all and (max-width:30em) {
+     a.button2 {
+        display: block;
+        margin: 0.4em auto;
+    }
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+#form {
+    opacity: 1;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}

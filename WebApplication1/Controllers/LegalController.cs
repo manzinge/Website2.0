@@ -25,29 +25,6 @@ namespace WebApplication1.Controllers
             _logger = logger;
         }
 
-        public IActionResult DSGVO()
-        {
-            return View();
-        }
-
-        public IActionResult Projects()
-        {
-            return View();
-        }
-        public IActionResult Index()
-        {
-            return View();
-        }
-        public IActionResult Knowledge()
-        {
-            return View();
-        }
-
-        public IActionResult Impressum()
-        {
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

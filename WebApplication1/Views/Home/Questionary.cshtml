@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Projekte";
+}
+<div class="text-center">
+    <h1 class="display-4">Umfrage</h1>
+</div>
+
+<div id="fullpage">
+    <div class="section">
+        <div class="center" id="form">
+            <a class="button2">Bereich 1</a>
+            <a class="button2">Bereich 2</a><br />
+            <a class="button2">Bereich 3</a>
+            <a class="button2">Bereich 4</a><br />
+            <a class="button2">Bereich 5</a>
+            <a class="button2">Bereich 6</a>
+        </div>
+    </div>
+    <div class="section">
+        aha
+    </div>
+</div>
+
+@section Scripts  {
+    <script type="text/javascript">
+        $('.button2').on('click', function () {
+            if ($('#form').css('opacity') == 1) $('#form').css('opacity', 0);
+            else $('#form').css('opacity', 0);
+            $.post("@Url.Action("GetQuestions","Questionary")", { choice : 1}, function (data) {
+            });
+        });
+        $(document).ready(function () {
+            $('#fullpage').fullpage({
+                //options here
+                autoScrolling: true,
+                scrollHorizontally: false,
+            });
+        });
+
+    </script>
+}
