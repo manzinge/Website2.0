@@ -7,35 +7,133 @@
 
 <div id="fullpage">
     <div class="section">
-        <div class="center" id="form">
-            <a class="button2">Bereich 1</a>
-            <a class="button2">Bereich 2</a><br />
-            <a class="button2">Bereich 3</a>
-            <a class="button2">Bereich 4</a><br />
-            <a class="button2">Bereich 5</a>
-            <a class="button2">Bereich 6</a>
+        <div class="btn-group form">
+            <a class="button2">Informatik</a>
+            <a class="button2">Wirtschaft</a><br />
+            <a class="button2">Sozial</a>
         </div>
-    </div>
-    <div class="section">
-        aha
+        <div class="btn-group form">
+            <a class="button2">Ingenieur</a>
+            <a class="button2">Kunst</a>
+            <a class="button2">Recht</a>
+        </div>
     </div>
 </div>
 
 @section Scripts  {
     <script type="text/javascript">
+        var tags = [];
+
+        //Button click scrolls User down to Questions (and Questions setup)
         $('.button2').on('click', function () {
-            if ($('#form').css('opacity') == 1) $('#form').css('opacity', 0);
-            else $('#form').css('opacity', 0);
-            $.post("@Url.Action("GetQuestions","Questionary")", { choice : 1}, function (data) {
-            });
-        });
-        $(document).ready(function () {
-            $('#fullpage').fullpage({
-                //options here
-                autoScrolling: true,
-                scrollHorizontally: false,
+            if ($('.form').css('opacity') == 1) $('.form').css('opacity', 0);
+            else $('.form').css('opacity', 0);
+            $.post("@Url.Action("GetQuestions","Questionary")", { choice: this.innerHTML }, function (data) {
+                console.log(data);
+                if (data.length > 0) {
+                    var i = 0;
+                    data.forEach(question => {
+                        i = i + 1;
+                        createQuestion(question, i);
+                    });
+                    addFinishSection(i+1);
+                    $('.section')[0].remove()
+                    resetFullpage();
+                    fullpage_api.moveTo('page1');
+                }
             });
         });
 
+        //Function to retrieve the FPjs license Key from the Controller
+        function getLicenseKey() {
+            return $.get("@Url.Action("GetFullpageLicense","Legal")");
+        }
+        //Update Question answer
+        function rangeValue(elem) {
+            elem.srcElement.parentElement.getElementsByTagName('div')[0].innerText = tags[0][elem.srcElement.value];
+        }
+
+        function addFinishSection(iterator) {
+            var div = document.createElement('div');
+            var p = document.createElement('p');
+            var restartButton = document.createElement('button');
+            var finishButton = document.createElement('button');
+
+            div.classList.add("section");
+            div.id = "section" + iterator;
+
+            p.id = "finishText"
+
+            restartButton.innerText = "Neuer Bereich";
+            restartButton.classList.add("finishbutton");
+            restartButton.onclick = function () { window.location.href = "https://maximilian-anzinger.ml/Home/Questionary" }
+
+            finishButton.innerText = "Fertig!";
+            finishButton.classList.add("finishbutton");
+            finishButton.onclick = function () { window.location.href = "https://maximilian-anzinger.ml"; }
+
+            p.innerHTML = "Danke fürs mitmachen!";
+            div.appendChild(p);
+            div.appendChild(restartButton);
+            div.appendChild(finishButton);
+            $("#fullpage").append(div);
+        }
+
+        function createQuestion(question, iterator) {
+            var div = document.createElement('div');
+            var p = document.createElement('p');
+            var valDiv = document.createElement('div');
+            var input = document.createElement('input');
+
+            div.classList.add("section");
+            div.id = "section" + iterator;
+            p.classList.add("question");
+            p.innerHTML = question.question;
+            valDiv.classList.add('value','section' + iterator);
+            valDiv.innerHTML = '?';
+            input.type = 'range';
+            input.min = 1;
+            input.max = 7;
+            input.step = 1;
+            input.value = 4;
+
+            div.appendChild(p);
+            div.appendChild(valDiv);
+            div.append(input);
+            $("#fullpage").append(div);
+        }
+
+        function resetFullpage() {
+            var activeSectionIndex = $('.fp-section.active').index();
+            var activeSlideIndex = $('.fp-section.active').find('.slide.active').index();
+            $.fn.fullpage.destroy('all');
+            //setting the active section as before
+            $('.section').eq(activeSectionIndex).addClass('active');
+            //were we in a slide? Adding the active state again
+            if (activeSlideIndex > -1) {
+                $('.section.active').find('.slide').eq(activeSlideIndex).addClass('active');
+            }
+            $('#fullpage').fullpage({
+                anchors: ['page1'],
+                navigation: true
+            });
+            for (var i = 0; i < $('input[type=range]').length; i++) {
+                console.log("updating input");
+                $('input[type=range]')[i].addEventListener("input", rangeValue);
+            }
+        }
+
+        //Setup of the Page
+        $(document).ready(function () {
+            getLicenseKey().then(response => {
+                $('#fullpage').fullpage({
+                    //options here
+                    autoScrolling: true,
+                    scrollHorizontally: false,
+                    licenseKey: response,
+                });
+            })
+            tags.push({ 1: "lehne stark ab", 2: "lehne ab", 3: "lehne ab", 4: "neutral", 5: "stimme zu", 6: "stimme zu", 7: "stimme stark zu" });
+        });
     </script>
 }

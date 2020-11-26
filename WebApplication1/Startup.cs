@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebApplication1.CustomClasses;
 
 namespace WebApplication1
 {
@@ -23,6 +24,9 @@ namespace WebApplication1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+            services.AddOptions();
+            services.Configure<Configuration>(Configuration.GetSection("Configuration"));
             services.AddControllersWithViews();
         }
 

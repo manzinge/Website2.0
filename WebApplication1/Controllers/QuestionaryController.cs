@@ -20,37 +20,23 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public async Task<string[]> GetQuestions(int choice)
+        public async Task<List<Questions>> GetQuestions(string choice)
         {
-            string topic = "none";
-            switch(choice)
-            {
-                case 1: topic = "topic1";break;
-                case 2: topic = "topic2";break;
-                case 3: topic = "topic3";break;
-                case 4: topic = "topic4";break;
-                case 5: topic = "topic5";break;
-                case 6: topic = "topic6";break;
-                default: break;
-            }
             string questionDirectory = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"Resources\"));
-            string targetFile = questionDirectory + "questions.json";
-            var jsonContent = System.IO.File.ReadAllText(targetFile);
+            string targetFile = questionDirectory + "questions.csv";
             try
             {
-                Question questions = JsonConvert.DeserializeObject<Question>(jsonContent);
-                //object[] questionsToAsk = questions.GetType().GetProperty(topic).GetValue(questions, null);
-                //return Array.ConvertAll<object, string>(questionsToAsk, ConvertObjectToString);
-                return new string[0];
+                List<Questions> questions = System.IO.File.ReadAllLines(targetFile)
+                   .Skip(1)
+                   .Select(v => Questions.FromCsv(v, choice))
+                   .ToList();
+                questions.RemoveAll(item => item == null);
+                return questions;
             }
-            catch (Exception ex)
+            catch
             {
-                return new string[0];
+                return new List<Questions>();
             }
-        }
-        string ConvertObjectToString(object obj)
-        {
-            return obj?.ToString() ?? string.Empty;
         }
     }
 }

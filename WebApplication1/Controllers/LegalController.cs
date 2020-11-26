@@ -9,6 +9,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using WebApplication1.CustomClasses;
@@ -19,9 +20,11 @@ namespace WebApplication1.Controllers
     public class LegalController : Controller
     {
         private readonly ILogger<LegalController> _logger;
+        private readonly IOptions<Configuration> config;
 
-        public LegalController(ILogger<LegalController> logger)
+        public LegalController(ILogger<LegalController> logger, IOptions<Configuration> config)
         {
+            this.config = config;
             _logger = logger;
         }
 
@@ -46,6 +49,11 @@ namespace WebApplication1.Controllers
                 //TODO
             }
             return jsonData;
+        }
+        [HttpGet]
+        public async Task<string> GetFullpageLicense()
+        {
+            return config.Value.fullpageLicenseKey;
         }
     }
 }
