@@ -82,11 +82,6 @@ input[type="range"]::-webkit-slider-thumb:active {
     font-size: 5em;
     margin-top: -4em;
 }
-.finishbutton {
-    margin: 10px;
-    width: 20em;
-    height: 5em;
-}
 
 #finishText {
     text-align: center;

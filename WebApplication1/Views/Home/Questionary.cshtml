@@ -7,15 +7,17 @@
 
 <div id="fullpage">
     <div class="section">
-        <div class="btn-group form">
-            <a class="button2">Informatik</a>
-            <a class="button2">Wirtschaft</a><br />
-            <a class="button2">Sozial</a>
-        </div>
-        <div class="btn-group form">
-            <a class="button2">Ingenieur</a>
-            <a class="button2">Kunst</a>
-            <a class="button2">Recht</a>
+        <div class="topicChoice">
+            <div class="btn-group form">
+                <a class="button2">Informatik</a>
+                <a class="button2">Wirtschaft</a><br />
+                <a class="button2">Sozial</a>
+            </div>
+            <div class="btn-group form">
+                <a class="button2">Ingenieur</a>
+                <a class="button2">Kunst</a>
+                <a class="button2">Recht</a>
+            </div>
         </div>
     </div>
 </div>
@@ -56,6 +58,7 @@
         function addFinishSection(iterator) {
             var div = document.createElement('div');
             var p = document.createElement('p');
+            var buttonDiv = document.createElement('div');
             var restartButton = document.createElement('button');
             var finishButton = document.createElement('button');
 
@@ -64,18 +67,23 @@
 
             p.id = "finishText"
 
+            buttonDiv.classList.add("buttonDiv");
+
             restartButton.innerText = "Neuer Bereich";
-            restartButton.classList.add("finishbutton");
+            restartButton.classList.add("finishButton");
             restartButton.onclick = function () { window.location.href = "https://maximilian-anzinger.ml/Home/Questionary" }
 
             finishButton.innerText = "Fertig!";
-            finishButton.classList.add("finishbutton");
+            finishButton.classList.add("finishButton");
+            finishButton.classList.add("rightFloat");
             finishButton.onclick = function () { window.location.href = "https://maximilian-anzinger.ml"; }
 
             p.innerHTML = "Danke fürs mitmachen!";
             div.appendChild(p);
-            div.appendChild(restartButton);
-            div.appendChild(finishButton);
+            buttonDiv.appendChild(restartButton);
+            buttonDiv.appendChild(finishButton);
+            div.appendChild(buttonDiv);
+
             $("#fullpage").append(div);
         }
 
