@@ -1,0 +1,127 @@
+﻿Id;Frage;Kategorie
+1;an einer Schule zuunterrichten;AGW
+2;junge Menschen zu fördern und zu erziehen;AGW
+3;einen Streit zu schlichten;AGW
+4;anderen zu helfen;AGW
+5;andere bei persönlichen Problemen zu unterstützen;AGW
+6;andere Menschen zu Überzeugen oder zu Überreden;AGW
+7;mich für andere einzusetzen ;AGW
+8;Sportarten intensiv zu trainieren;AGW
+9;die Technik verschiedener Sportarten zu lernen;AGW
+10;sportliche Trainingsmethoden zu optimieren;AGW
+11;die Funktionsweise des menschlichen Körpers bei Sport und Bewegung zu verstehen;AGW
+12;mich mit den körperlichen Abläufen beim Sport zu beschäftigen;AGW
+13;Konflikte zwischen Personen zu schlichten;AGW
+14;kranke Menschen zu behandeln und zu heilen;AGW
+15;Beratungsgespräche über gesunde Ernährung und Bewegung führengeschäftliche Briefe zu verfassen;AGW
+16;mich in die Lage anderer Menschen einzufühlen;AGW
+17;Menschen mit persönlichen Problemen zu helfen;AGW
+18;mit Kindern und Jugendlichen zu arbeiten;AGW
+19;bedürftige (z.B. Ältere oder behinderte) Menschen in ihrer Alltagsbewältigung zu unterstützen;AGW
+43;mich auf ganz unterschiedliche Menschen einzustellen;AGW
+20;wie Daten im Internet übertragen werden;AI
+21;Prozesse oder Abläufe mit dem Computer zu simulieren;AI
+22;Daten auszuwerten;AI
+23;Probleme zu analysieren und mögliche Lösungen zu finden;AI
+24;Computernetzwerke einzurichten und zu betreuen;AI
+25;die Funktionsweise von technischen Geräten zu erkunden;AI
+26;Hardware (wie z.B. eine Festplatte oder einen Prozessor) in Computer einzubauen;AI
+27;Programme zu entwickeln und zu planen;AI
+28;Die Funktionsweise eines Computers kennenzulernen;AI
+29;An Robotern zu arbeiten (Software- und Hardware);AI
+30;Die Nutzererfahrung von Programmen zu verbessern;AI
+31;Websiten zu erstellen ;AI
+32;Algorithmen zu verstehen und zu entwerfen;AI
+33;mich beruflich selbstständig zu machen;ALL
+34;Ziele langfristig zu verfolgen;ALL
+35;einen strukturierten Alltag zu haben;ALL
+38;ein Forschungsexperiment zu planen;ALL
+39;eine Ordnungssystematik zu entwickeln und anzuwenden;ALL
+40;Abläufe durch ein Schema zu verdeutlichen;ALL
+41;Freude am Lernen zu haben;ALL
+42;meine Ideen in einer Gruppe durchzusetzen;ALL
+44;Bei Konkurrenz mein bestes zu geben;ALL
+46;mehr Praxis zu erfahren als Theorie;ALL
+47;mich systematisch in neue Themenbereiche einzuarbeiten;ALL
+36;mich unterzuordnen;AWW
+37;anspruchsvolle Texte zu lesen;AWW
+48;eine Geschäftsniederlassung zu leiten;AWW
+49;andere zu beraten, wie ein Unternehmen zu führen ist;AWW
+50;die Leitung eines Teams zu übernehmen;AWW
+51;die Beachtung von Vorschriften zu kontrollieren;AWW
+52;Produkte zu verkaufen;AWW
+53;Sachen und Termine zu planen und klar zu organisieren;AWW
+54;mich sprachlich gut und treffend auszudrücken;AWW
+55;neuartige Hypothesen aufzustellen und zu prüfen;AWW
+56;ein eigenes Unternehmen zu gründen und zu führen;AWW
+57;auf einer Bühne vor Publikum auzuftreten;AWW
+58;mit einflussreichen Personen aus Wirtschaft und Politik zusammentreffen;AWW
+59;junge Menschen auszubilden;AWW
+60;einen Vortrag über ein neues Produkt zu halten;AWW
+61;Personalakten zu führen und zu verwalten;AWW
+62;eigene Geschäftsideen zu vertreten und zu durchsetzen;AWW
+63;Geschäftsplan für ein junges Unternehmen zu erstellen;AWW
+64;die Bilanzen und Geschäftszahlen eines Unternehmens zu kontrollieren;AWW
+65;ein Ablage- und Ordnungssystem für geschäftliche Unterlagen zu entwickeln;AWW
+66;geschäftliche Verhandlungen zu führen;AWW
+67;den wirtschaftlichen Erfolg eines Unternehmens zu  steigern;AWW
+68;ein Unternehmen oder eine Abteilung zu führen;AWW
+69;Statistiken und Diagramme für verschiedene Geschäftsbereiche zu erstellen;AWW
+70;Kunden von einem Produkt zu überzeugen;AWW
+71;Teambesprechungen und Geschäftstermine zeitlich zu koordinieren und zu organisieren;AWW
+72;Richtlinien für reibungslose Organisationsabläufe zu erarbeiten;AWW
+73;Projektabläufe detailliert vorauszuplanen;BIW
+74;umweltfreundliche, energiearme Häuser zu entwerfen;BIW
+75;die Strömungseigenschaften eines Modells im Windkanal zu testen;BIW
+76;die Störungsanfälligkeit von Brennstoffzellen zu reduzieren;BIW
+77;in wichtigen Projekten die Verantwortung zu tragen;BIW
+78;Computersimulationen für technische Anlagen (z.B. einen Windpark) zu erstellen;BIW
+79;neuartige, technische Lösungen zur Nutzung erneuerbarer Energien zu entwickeln;BIW
+80;in einer Werkstatt oder auf einer Baustelle zu arbeiten;BIW
+81;Gebäude, Innenräume und Landschaften (z.B. Gärten und Parks) kreativ zu entwerfen;BIW
+82;handwerklich zu arbeiten;BIW
+45;mich mit technischen Geräten zu beschäftigen;EMT
+83;etwas zu zeichnen oder in Öl zu malen;EMT
+84;etwas pantomimisch darzustellen;EMT
+85;ein Musikinstrument zu üben oder Gesangsunterricht zu nehmen;EMT
+86;Kunstausstellungen zu besuchen;EMT
+87;eigene Songs oder Musikstücke zu komponieren;EMT
+88;als Schauspieler in einem Theaterstück mitzuspielen;EMT
+89;sich intensiv mit verschiedenen Musikrichtungen auseinanderzusetzen;EMT
+90;eine Buchkritik zu verfassen;EMT
+91;Theateraufführungen zu besuchen;EMT
+92;micht mit Ästhetik zu beschäftigen;EMT
+93;künstlerische Disziplinen zu auszuführen;EMT
+94;meine kreativen Fähigkeiten und Werke zu präsentieren;EMT
+95;die Funktionsweise eines GPS-Systems zu verbessern;EMT
+96;Sachen zu reparieren (elektronisch);EMT
+97;elektrische Geräte zu montieren, anzuschließen und einzubauen;EMT
+98;Berechnungen und Berichte auf Fehler zu kontrollieren;EMT
+99;Artikel und Beiträge für Medien (z.B. Zeitschriften, Zeitungen, Onlinemagazine, Radio, TV) zu verfassen;EMT
+100;Filme und Fotos am Computer kreativ aufzubereiten;EMT
+101;einer künstlerischen oder kreativen Arbeit nachzugehen;EMT
+102;sich professionell mit der Fotografie zu beschäftigen;EMT
+103;Werbemittel (z.B. von Bildern, Anzeigen, Webseiten, Verpackungen usw.) grafisch zu gestalten;EMT
+104;an der frischen Luft zu arbeiten;MBMK
+105;einen Konstruktionsplan zu entwerfen;MBMK
+106;Sachen zu reparieren (mechanisch);MBMK
+107;Konstruktionspläne für technische Anlagen und Maschinen anzufertigen;MBMK
+108;technische Anlagen und Maschinen zu bedienen;MBMK
+109;sich mit Literatur zu beschäftigen;NUW
+110;die Ergebnisse eines Projekts zu dokumentieren;NUW
+111;Ergebnisse einer umfangreichen Recherche zu gliedern und zusammenzustellen;NUW
+112;Dinge oder Vorgänge genau zu analysieren;NUW
+113;Funktionsprinzipien aus der Natur für technische Lösungen zu nutzen;NUW
+114;unerforschten Fragen nachzugehen;NUW
+115;Zusammenhänge durch wissenschaftliche Untersuchungen aufzudecken;NUW
+116;Ursachen und Wirkungen eines Problems zu untersuchen;NUW
+117;mich mit abstrakten Zusammenhängen zu beschäftigen;NUW
+118;die Gemeinsamkeit hinter verschiedenen Beobachtungen zu entdecken;NUW
+119;wissenschaftliche Fachbegriffe zu verwenden und zu verstehen;NUW
+120;die Ursachen eines Problems durch wissenschaftliche Untersuchungen zu analysieren;NUW
+121;eine wissenschaftliche Theorie eingehend zu studieren;NUW
+122;sich mit unerforschten Themengebieten auseinanderzusetzen;NUW
+123;wissenschaftliche Experimente zu planen, durchzuführen und auszuwerten;NUW
+124;sich mit theoretischen Fragestellungen auseinanderzusetzen;NUW
+125;in einem Labor oder Forschungsinstitut zu arbeiten;NUW
+126;Forschungsergebnisse auf einem wissenschaftlichen Kongress vorzustellen;NUW

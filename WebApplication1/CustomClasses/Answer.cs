@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace WebApplication1.CustomClasses
 {
-    public class Configuration
+    public class Answer
     {
-        public string fullpageLicenseKey { get; set; }
-        public string dbConString { get; set; }
+        public int answer { get; set; }
+        public string question { get; set; }
     }
 }

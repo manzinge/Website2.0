@@ -7,31 +7,50 @@ namespace WebApplication1.CustomClasses
 {
     public class Questions
     {
-        public string type { get; set; }
-        public string question { get; set; }
+        public int Id { get; set; }
+        public string Frage { get; set; }
+        public string Kategorie { get; set; }
         public static Questions FromCsv(string csvLine)
         {
-            string[] values = csvLine.Split(',');
+            string[] values = csvLine.Split(';');
             Questions questions = new Questions();
-            questions.type = values[0];
-            questions.question = values[1];
+            questions.Id = Int32.Parse(values[0]);
+            questions.Frage = values[1];
+            questions.Kategorie = values[2];
             return questions;
         }
 
-        public static Questions FromCsv(string csvLine, string filter)
+        public static Questions FromCsv(string csvLine, string filter, bool all)
         {
-            string[] values = csvLine.Split(',');
+            string[] values = csvLine.Split(';');
             Questions questions = new Questions();
-            if (values[0] == filter)
+            if(all)
             {
-                questions.type = values[0];
-                questions.question = values[1];
-                return questions;
+                if (values[2] == filter || values[2] == "ALL")
+                {
+                    questions.Id = Int32.Parse(values[0]);
+                    questions.Frage = values[1];
+                    questions.Kategorie = values[2];
+                    return questions;
+                }
+                else
+                {
+                    return null;
+                }
             }
             else
             {
-
-                return null;
+                if (values[2] == filter)
+                {
+                    questions.Id = Int32.Parse(values[0]);
+                    questions.Frage = values[1];
+                    questions.Kategorie = values[2];
+                    return questions;
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
     }

@@ -1,37 +1,72 @@
 ﻿@{
-    ViewData["Title"] = "Projekte";
+    ViewData["Title"] = "Umfrage";
 }
 <div class="text-center">
-    <h1 class="display-4">Umfrage</h1>
+    <h1 class="display-4" id="questionHeader">Bitte wähle einen Bereich aus, der dich interessiert (nicht zwingend deinen Studienbereich)</h1>
 </div>
 
 <div id="fullpage">
     <div class="section">
-        <div class="topicChoice">
-            <div class="btn-group form">
-                <a class="button2">Informatik</a>
-                <a class="button2">Wirtschaft</a><br />
-                <a class="button2">Sozial</a>
-            </div>
-            <div class="btn-group form">
-                <a class="button2">Ingenieur</a>
-                <a class="button2">Kunst</a>
-                <a class="button2">Recht</a>
-            </div>
+        <div class="topicChoice" style="text-align:center;">
+            <a class="button2" style="background-color: #12A538;">Bauingenieurwesen & Umwelttechnik</a>
+            <a class="button2" style="background-color: #ec403e;">Angewandte Wirtschaftswissenschaften</a>
+            <a class="button2" style="background-color: #FFD500;">Elektrotechnik und Medientechnik</a>
+            <a class="button2" style="background-color: #0285C8;">Maschinenbau und Mechatronik</a>
+            <a class="button2" style="background-color: #6a01ffa6;">Angewandte Naturwissenschaften und Wirtschaftsingenieurwesen</a>
+            <a class="button2" style="background-color: #F18702;">Angewandte Gesundheitswissenschaften</a>
+            <a class="button2" style="background-color: #E73D55;">Angewandte Informatik</a>
         </div>
     </div>
+
 </div>
 
 @section Scripts  {
     <script type="text/javascript">
         var tags = [];
 
+        class Answer {
+            constructor(answer, question) {
+                this.answer = answer;
+                this.question = question;
+            }
+        }
+
         //Button click scrolls User down to Questions (and Questions setup)
         $('.button2').on('click', function () {
             if ($('.form').css('opacity') == 1) $('.form').css('opacity', 0);
             else $('.form').css('opacity', 0);
-            $.post("@Url.Action("GetQuestions","Questionary")", { choice: this.innerHTML }, function (data) {
-                console.log(data);
+            targetTopic = "";
+            var searcher = this.innerHTML.replace('&amp;', '&');
+            switch (searcher) {
+                case "Bauingenieurwesen & Umwelttechnik":
+                    targetTopic = "BIW";
+                    break;
+                case "Angewandte Wirtschaftswissenschaften":
+                    targetTopic = "AWW";
+                    break;
+                case "Elektrotechnik und Medientechnik":
+                    targetTopic = "EMT";
+                    break;
+                case "Maschinenbau und Mechatronik":
+                    targetTopic = "MBMK";
+                    break;
+                case "Angewandte Naturwissenschaften und Wirtschaftsingenieurwesen":
+                    targetTopic = "NUW";
+                    break;
+                case "Angewandte Gesundheitswissenschaften":
+                    targetTopic = "AGW";
+                    break;
+                case "Angewandte Informatik":
+                    targetTopic = "AI";
+                    break;
+                default:
+                    break;
+            }
+            var all = true;
+            if (localStorage.getItem('All')) {
+                all = false;
+            }
+            $.post("@Url.Action("GetQuestions","Questionary")", { choice: targetTopic,all: all }, function (data) {
                 if (data.length > 0) {
                     var i = 0;
                     data.forEach(question => {
@@ -40,11 +75,58 @@
                     });
                     addFinishSection(i+1);
                     $('.section')[0].remove()
+                    $('#questionHeader').text("Ich interessiere mich dafür...");
                     resetFullpage();
                     fullpage_api.moveTo('page1');
                 }
             });
         });
+        function sendAnswersToDB() {
+            var check = $('.value')
+            for (var i = 0; i < check.length; i++) {
+                if (check[i].innerText == '?') {
+                    Swal.fire({
+                        title: 'Moment!',
+                        text: 'Bitte beantworte zuerst alle Fragen!',
+                        icon: 'warning',
+                        confirmButtonText: 'OK'
+                    })
+                    return;
+                }
+            }
+            var inputs = $('input[type=range]')
+            var answerArray = [];
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].id != '') {
+                    var answ = new Answer(parseInt(inputs[i].value), "question" + inputs[i].id);
+                    answerArray.push(answ);
+                }
+            }
+            $.getJSON('https://api.ipify.org?format=json', function (data) {
+                $.post("@Url.Action("SendAnswersToDB","Questionary")", { ip: data.ip, answers: answerArray }).done(function () {
+                Swal.fire({
+                    title: 'Juhu!',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    html: 'Danke für deine Teilnahme!<br>Es wäre toll wenn du noch einen weiteren Bereich beantworten könntest! &#x1F60A;',
+                    timer: 5000,
+                    timerProgressBar: true,
+                }).then((result) => {
+                    localStorage.setItem('All', false)
+                    location.reload();;
+                })
+                }).fail(function (res) {
+                    console.log(res);
+                Swal.fire({
+                    title: "Oh nein!",
+                    text: 'Deine Daten konnten leider nicht gesendet werden!',
+                    icon: 'error',
+                    confirmButtonText: "OK"
+                })
+            })
+            });
+        }
+
 
         //Function to retrieve the FPjs license Key from the Controller
         function getLicenseKey() {
@@ -58,8 +140,6 @@
         function addFinishSection(iterator) {
             var div = document.createElement('div');
             var p = document.createElement('p');
-            var buttonDiv = document.createElement('div');
-            var restartButton = document.createElement('button');
             var finishButton = document.createElement('button');
 
             div.classList.add("section");
@@ -67,22 +147,13 @@
 
             p.id = "finishText"
 
-            buttonDiv.classList.add("buttonDiv");
-
-            restartButton.innerText = "Neuer Bereich";
-            restartButton.classList.add("finishButton");
-            restartButton.onclick = function () { window.location.href = "https://maximilian-anzinger.ml/Home/Questionary" }
-
-            finishButton.innerText = "Fertig!";
+            finishButton.innerText = "Daten abschicken!";
             finishButton.classList.add("finishButton");
-            finishButton.classList.add("rightFloat");
-            finishButton.onclick = function () { window.location.href = "https://maximilian-anzinger.ml"; }
+            finishButton.addEventListener("click", sendAnswersToDB);
 
             p.innerHTML = "Danke fürs mitmachen!";
             div.appendChild(p);
-            buttonDiv.appendChild(restartButton);
-            buttonDiv.appendChild(finishButton);
-            div.appendChild(buttonDiv);
+            div.appendChild(finishButton);
 
             $("#fullpage").append(div);
         }
@@ -92,19 +163,36 @@
             var p = document.createElement('p');
             var valDiv = document.createElement('div');
             var input = document.createElement('input');
+            var datalist = document.createElement('datalist');
+
 
             div.classList.add("section");
             div.id = "section" + iterator;
             p.classList.add("question");
-            p.innerHTML = question.question;
+            p.innerHTML = question.frage;
             valDiv.classList.add('value','section' + iterator);
             valDiv.innerHTML = '?';
+            if (iterator == 1) {
+                valDiv.innerHTML = "Bewege den Slider"
+            }
+
+            datalist.id = "datalist"
+            for (var i = 1; i <= 7; i++) {
+                var option = document.createElement("OPTION");
+                option.innerText = i;
+                datalist.append(option);
+            }
             input.type = 'range';
             input.min = 1;
             input.max = 7;
             input.step = 1;
             input.value = 4;
-
+            input.id = question.id;
+            input.append(datalist);
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                input.setAttribute('list', 'datalist');
+                $('#questionHeader').css({ 'font-size': '2em' });
+            }
             div.appendChild(p);
             div.appendChild(valDiv);
             div.append(input);
@@ -123,10 +211,9 @@
             }
             $('#fullpage').fullpage({
                 anchors: ['page1'],
-                navigation: true
+                navigation: true,
             });
             for (var i = 0; i < $('input[type=range]').length; i++) {
-                console.log("updating input");
                 $('input[type=range]')[i].addEventListener("input", rangeValue);
             }
         }
@@ -141,7 +228,16 @@
                     licenseKey: response,
                 });
             })
-            tags.push({ 1: "lehne stark ab", 2: "lehne ab", 3: "lehne ab", 4: "neutral", 5: "stimme zu", 6: "stimme zu", 7: "stimme stark zu" });
+            if (localStorage.getItem('All')) {
+                Swal.fire({
+                    title: 'Künstliche Intelligenz',
+                    html: 'Für meine Bachelorarbeit brauche ich Daten!<br>Unterstütz mich doch und beantworte einen weiteren Bereich<br>PS: Es ist egal ob du das studierst oder nicht &#x1F60A;',
+                    icon: 'warning',
+                    confirmButtonText: 'Na Klar!'
+                })
+                $('#questionHeader').text("");
+            }
+            tags.push({ 1: "lehne stark ab", 2: "lehne ab", 3: "lehne eher ab", 4: "neutral", 5: "stimme eher zu", 6: "stimme zu", 7: "stimme stark zu" });
         });
     </script>
 }

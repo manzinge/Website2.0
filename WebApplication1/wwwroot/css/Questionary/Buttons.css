@@ -10,6 +10,7 @@
     padding: 21px 50px;
     text-decoration: none;
     text-shadow: 0px 1px 8px #2f6627;
+    margin-left: 40%;
 }
 
     .finishButton:hover {
@@ -21,12 +22,100 @@
         top: 1px;
     }
 
+a.button2 {
+    display: inline-block;
+    border: 0.15em solid black;
+    margin: 0 0.5em 0.5em 0;
+    box-sizing: border-box;
+    text-decoration: solid;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: black;
+    text-align: center;
+    transition: all 0.15s;
+    background-color: white;
+    border-radius: 10px;
+    width: 70%;
+    height: 4em;
+    line-height: 4em;
+    margin-bottom: 2em;
+    cursor: pointer;
+}
+
+    a.button2:hover {
+        color: #DDDDDD;
+        border-color: black;
+    }
+
+    a.button2:active {
+        color: #BBBBBB;
+        border-color: black;
+    }
+
 .buttonDiv {
     margin: auto;
     width: 50%;
     padding: 10px;
 }
 
-.rightFloat {
-    float:right;
+
+.btn-group button {
+    background-color: #4CAF50; /* Green background */
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+}
+
+    .btn-group button:not(:last-child) {
+        border-right: none; /* Prevent double borders */
+    }
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #3e8e41;
+}
+
+
+@media (max-width:1000px) {
+    .finishButton {
+        height: 4em;
+        width: 100%;
+        margin-bottom: 1em;
+        margin-top: 1em;
+        padding: 0;
+        margin-left:0em;
+    }
+    a.button2 {
+        display: inline-block;
+        border: 0.15em solid black;
+        margin: 0 0.5em 0.5em 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 500;
+        color: black;
+        text-align: center;
+        transition: all 0.15s;
+        background-color: white;
+        border-radius: 10px;
+        width: 100%;
+        line-height: inherit;
+    }
+}
+
+@media all and (max-width:30em) {
+     a.button2 {
+        display: block;
+        margin: 0.4em auto;
+    }
 }

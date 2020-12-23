@@ -106,6 +106,12 @@ html.fp-enabled,
 #fp-nav.fp-right {
     right: 17px;
 }
+
+@media (max-width: 1000px) {
+    #fp-nav.fp-right {
+        right: 1px;
+    }
+}
 #fp-nav.fp-left {
     left: 17px;
 }
